@@ -1,4 +1,5 @@
 import Section from './Section'
+import ContactForm from './ContactForm'
 import { profile } from '../data/Profile'
 
 function Contact() {
@@ -6,35 +7,39 @@ function Contact() {
 
   return (
     <Section id="contact" title="Get in touch">
-      <div className="max-w-2xl">
-        <p className="text-lg text-muted">
-          I'm always open to discussing frontend roles, freelance work or
-          interesting projects. My inbox is open, so say hello.
-        </p>
+      <div className="grid gap-12 md:grid-cols-2">
+        <div>
+          <p className="text-lg text-muted">
+            I'm always open to discussing frontend roles, freelance work or
+            interesting projects. Send a message using the form, or email me at{' '}
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-accent hover:underline"
+            >
+              {profile.email}
+            </a>
+            .
+          </p>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-8 inline-block rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-500"
-        >
-          Say hello
-        </a>
+          {links.length > 0 && (
+            <ul className="mt-8 flex gap-6">
+              {links.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-body hover:text-accent"
+                  >
+                    {social.label} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-        {links.length > 0 && (
-          <ul className="mt-8 flex gap-6">
-            {links.map((social) => (
-              <li key={social.label}>
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-body hover:text-accent"
-                >
-                  {social.label} ↗
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ContactForm />
       </div>
     </Section>
   )
