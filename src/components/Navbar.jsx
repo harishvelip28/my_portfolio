@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../hooks/useTheme'
+import { useActiveSection } from '../hooks/useActiveSection' // new
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -10,20 +11,30 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-function NavLinks({ className, onLinkClick }) {
+// new: ids of every section to watch ('home' is the Hero)
+const sectionIds = ['home', ...navLinks.map((link) => link.href.slice(1))]
+
+function NavLinks({ className, activeId, onLinkClick }) {
   return (
     <ul className={className}>
-      {navLinks.map((link) => (
-        <li key={link.href}>
-          <a
-            href={link.href}
-            onClick={onLinkClick}
-            className="block text-body transition-colors hover:text-heading"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+      {navLinks.map((link) => {
+        const isActive = link.href === `#${activeId}` // new
+
+        return (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              onClick={onLinkClick}
+              aria-current={isActive ? 'location' : undefined} // new
+              className={`block transition-colors hover:text-heading ${
+                isActive ? 'text-accent' : 'text-body'
+              }`} // changed
+            >
+              {link.label}
+            </a>
+          </li>
+        )
+      })}
     </ul>
   )
 }
@@ -31,6 +42,7 @@ function NavLinks({ className, onLinkClick }) {
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const activeId = useActiveSection(sectionIds) // new
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-line bg-card/90 backdrop-blur">
@@ -40,7 +52,7 @@ function Navbar() {
         </a>
 
         <div className="flex items-center gap-4">
-          <NavLinks className="hidden gap-8 md:flex" />
+          <NavLinks className="hidden gap-8 md:flex" activeId={activeId} />
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <button
             className="text-2xl text-body md:hidden"
@@ -56,6 +68,7 @@ function Navbar() {
       {isOpen && (
         <NavLinks
           className="flex flex-col gap-4 bg-card px-6 pb-6 md:hidden"
+          activeId={activeId}
           onLinkClick={() => setIsOpen(false)}
         />
       )}
