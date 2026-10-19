@@ -4,17 +4,17 @@ function Hero() {
   return (
     <section id="home" className="flex min-h-screen items-center px-6 pt-20">
       <div className="mx-auto w-full max-w-6xl">
-        <p className="mb-4 font-mono text-blue-500">Hi, my name is</p>
+        <p className="mb-4 font-mono text-accent">Hi, my name is</p>
 
-        <h1 className="text-5xl font-bold text-white md:text-7xl">
+        <h1 className="text-5xl font-bold text-heading md:text-7xl">
           {profile.name}
         </h1>
 
-        <h2 className="mt-2 text-3xl font-semibold text-slate-400 md:text-5xl">
+        <h2 className="mt-2 text-3xl font-semibold text-muted md:text-5xl">
           {profile.role}
         </h2>
 
-        <p className="mt-6 max-w-xl text-lg text-slate-400">
+        <p className="mt-6 max-w-xl text-lg text-muted">
           {profile.tagline}
         </p>
 
@@ -27,7 +27,7 @@ function Hero() {
           </a>
           <a
             href="#contact"
-            className="rounded-lg border border-slate-700 px-6 py-3 font-medium text-slate-300 transition-colors hover:border-blue-500 hover:text-blue-400"
+            className="rounded-lg border border-line px-6 py-3 font-medium text-body transition-colors hover:border-blue-500 hover:text-accent"
           >
             Contact me
           </a>

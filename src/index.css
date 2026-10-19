@@ -1,7 +1,54 @@
 @import "tailwindcss";
 
+:root {
+  --page: #f8fafc;
+  --card: #ffffff;
+  --pill: #e2e8f0;
+  --line: #e2e8f0;
+  --heading: #0f172a;
+  --body: #334155;
+  --muted: #475569;
+  --faint: #64748b;
+  --accent: #2563eb;
+}
+
+.dark {
+  --page: #020617;
+  --card: #0f172a;
+  --pill: #1e293b;
+  --line: #1e293b;
+  --heading: #ffffff;
+  --body: #cbd5e1;
+  --muted: #94a3b8;
+  --faint: #64748b;
+  --accent: #60a5fa;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-pill: var(--pill);
+  --color-line: var(--line);
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+}
+
+body {
+  background-color: var(--page);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }

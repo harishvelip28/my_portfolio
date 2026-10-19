@@ -7,7 +7,7 @@ function Contact() {
   return (
     <Section id="contact" title="Get in touch">
       <div className="max-w-2xl">
-        <p className="text-lg text-slate-400">
+        <p className="text-lg text-muted">
           I'm always open to discussing frontend roles, freelance work or
           interesting projects. My inbox is open, so say hello.
         </p>
@@ -27,7 +27,7 @@ function Contact() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-300 hover:text-blue-400"
+                  className="text-body hover:text-accent"
                 >
                   {social.label} ↗
                 </a>
