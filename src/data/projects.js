@@ -5,7 +5,7 @@ export const projects = [
       'An AI-assisted cricket auction application that automates player valuation and manages the auction flow.',
     tech: ['React', 'Tailwind CSS', 'AI'],
     github: 'https://github.com/harishvelip28/spl-auction',
-    live: '',
+    live: 'https://spl-auction2.vercel.app/',
   },
   {
     title: 'Library Management System',
