@@ -1,4 +1,4 @@
-import { profile } from '../data/Profile'
+import { profile } from '../data/profile'
 
 function Hero() {
   return (

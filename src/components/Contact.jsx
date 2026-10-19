@@ -1,6 +1,6 @@
 import Section from './Section'
 import ContactForm from './ContactForm'
-import { profile } from '../data/Profile'
+import { profile } from '../data/profile'
 
 function Contact() {
   const links = profile.socials.filter((social) => social.url)

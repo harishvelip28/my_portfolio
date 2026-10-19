@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { profile } from '../data/Profile'
+import { profile } from '../data/profile'
 
 const initialForm = { name: '', email: '', message: '' }
 

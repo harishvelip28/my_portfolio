@@ -1,6 +1,7 @@
-import Section from './Section'
-import ProjectCard from './ProjectCard'
-import { projects } from '../data/projects'
+import Section from "./Section";
+import ProjectCard from "./ProjectCard";
+// import GithubRepos from "./GithubRepos";
+import { projects } from "../data/projects";
 
 function Projects() {
   return (
@@ -10,8 +11,11 @@ function Projects() {
           <ProjectCard key={project.title} project={project} />
         ))}
       </div>
+
+      {/* uncomment this to display GitHub repositories */}
+      {/* <GithubRepos /> */}
     </Section>
-  )
+  );
 }
 
-export default Projects
+export default Projects;

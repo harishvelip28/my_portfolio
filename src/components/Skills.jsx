@@ -1,5 +1,5 @@
 import Section from './Section'
-import { skills } from '../data/Skills'
+import { skills } from '../data/skills'
 
 function Skills() {
   return (

@@ -1,5 +1,5 @@
 import Section from './Section'
-import { profile } from '../data/Profile'
+import { profile } from '../data/profile'
 
 function About() {
   return (

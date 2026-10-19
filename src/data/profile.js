@@ -11,7 +11,11 @@ export const profile = {
   ],
   socials: [
     { label: "GitHub", url: "" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/harish-velip-499390420" },
+    {
+      label: "LinkedIn",
+      url: "https://www.linkedin.com/in/harish-velip-499390420",
+    },
   ],
   formEndpoint: "https://formspree.io/f/mrpedjjp",
+  githubUsername: "harishvelip28",
 };
