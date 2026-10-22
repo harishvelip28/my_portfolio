@@ -1,4 +1,6 @@
-export const skills = [
+import type { SkillGroup } from '../types'
+
+export const skills: SkillGroup[] = [
   {
     category: 'Frontend',
     items: ['Angular', 'TypeScript', 'React', 'JavaScript (ES6)', 'HTML5', 'CSS3', 'Bootstrap'],

@@ -1,4 +1,6 @@
-export const profile = {
+import type { Profile } from '../types'
+
+export const profile: Profile = {
   name: "Harish Hanumant Velip",
   role: "Frontend Developer / Software Engineer",
   tagline:
