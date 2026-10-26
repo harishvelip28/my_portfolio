@@ -33,3 +33,5 @@ export interface Project {
   github: string
   live: string
 }
+
+export type Theme = 'light' | 'dark'

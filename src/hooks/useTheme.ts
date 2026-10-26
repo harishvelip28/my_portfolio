@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import type { Theme } from '../types'
 
-function getInitialTheme() {
+function getInitialTheme(): Theme {
   const saved = localStorage.getItem('theme')
   if (saved === 'light' || saved === 'dark') return saved
 
@@ -10,14 +11,15 @@ function getInitialTheme() {
 }
 
 export function useTheme() {
-  const [theme, setTheme] = useState(getInitialTheme)
+  const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))
+  const toggleTheme = () =>
+    setTheme((current) => (current === 'dark' ? 'light' : 'dark'))
 
   return { theme, toggleTheme }
 }

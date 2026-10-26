@@ -1,4 +1,11 @@
-function ThemeToggle({ theme, onToggle }) {
+import type { Theme } from '../types'
+
+interface ThemeToggleProps {
+  theme: Theme
+  onToggle: () => void
+}
+
+function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   const isDark = theme === 'dark'
 
   return (
