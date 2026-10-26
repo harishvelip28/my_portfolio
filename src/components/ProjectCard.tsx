@@ -1,4 +1,10 @@
-function ProjectCard({ project }) {
+import type { Project } from '../types'
+
+interface ProjectCardProps {
+  project: Project
+}
+
+function ProjectCard({ project }: ProjectCardProps) {
   const { title, description, tech, github, live } = project
 
   return (
