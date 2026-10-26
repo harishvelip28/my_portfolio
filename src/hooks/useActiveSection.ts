@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 
-export function useActiveSection(ids) {
+export function useActiveSection(ids: string[]): string {
   const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
     const elements = ids
       .map((id) => document.getElementById(id))
-      .filter(Boolean)
+      .filter((element): element is HTMLElement => element !== null)
 
     const observer = new IntersectionObserver(
       (entries) => {
