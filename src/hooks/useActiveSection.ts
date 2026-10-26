@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 
 export function useActiveSection(ids: string[]): string {
   const [activeId, setActiveId] = useState('')
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const elements = ids
@@ -20,7 +22,7 @@ export function useActiveSection(ids: string[]): string {
     elements.forEach((element) => observer.observe(element))
 
     return () => observer.disconnect()
-  }, [ids])
+  }, [ids, pathname])
 
   return activeId
 }
