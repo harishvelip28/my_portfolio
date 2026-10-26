@@ -1,17 +1,25 @@
 import ProjectCard from './ProjectCard'
 import { useGithubRepos } from '../hooks/useGithubRepos'
 import { profile } from '../data/profile'
+import type { GithubRepo, Project } from '../types'
 
 // Reshape a GitHub repo into the props ProjectCard already understands
-function toProject(repo) {
+function toProject(repo: GithubRepo): Project {
   const { homepage } = repo
+  const live = homepage
+    ? homepage.startsWith('http')
+      ? homepage
+      : `https://${homepage}`
+    : ''
 
   return {
     title: repo.name,
     description: repo.description || 'No description yet.',
-    tech: [repo.language, ...(repo.topics ?? [])].filter(Boolean),
+    tech: [repo.language, ...(repo.topics ?? [])].filter(
+      (tag): tag is string => tag !== null
+    ),
     github: repo.html_url,
-    live: homepage && !homepage.startsWith('http') ? `https://${homepage}` : homepage,
+    live,
   }
 }
 

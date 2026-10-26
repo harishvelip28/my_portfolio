@@ -35,3 +35,16 @@ export interface Project {
 }
 
 export type Theme = 'light' | 'dark'
+
+export type FetchStatus = 'loading' | 'success' | 'error'
+export interface GithubRepo {
+  id: number
+  name: string
+  description: string | null
+  html_url: string
+  homepage: string | null
+  language: string | null
+  topics?: string[]
+  fork: boolean
+  archived: boolean
+}

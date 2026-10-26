@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
+import type { FetchStatus, GithubRepo } from '../types'
 
-export function useGithubRepos(username) {
-  const [repos, setRepos] = useState([])
-  const [status, setStatus] = useState('loading') // loading | success | error
+export function useGithubRepos(username: string) {
+  const [repos, setRepos] = useState<GithubRepo[]>([])
+  const [status, setStatus] = useState<FetchStatus>('loading')
 
   useEffect(() => {
     if (!username) return
@@ -19,11 +20,11 @@ export function useGithubRepos(username) {
         )
         if (!response.ok) throw new Error(`GitHub responded ${response.status}`)
 
-        const data = await response.json()
+        const data: GithubRepo[] = await response.json()
         setRepos(data)
         setStatus('success')
       } catch (error) {
-        if (error.name === 'AbortError') return
+        if (error instanceof DOMException && error.name === 'AbortError') return
         setStatus('error')
       }
     }
