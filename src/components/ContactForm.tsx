@@ -1,21 +1,25 @@
 import { useState } from 'react'
+import type { ChangeEvent, FormEvent } from 'react'
 import { profile } from '../data/profile'
+import type { ContactFormData, FormStatus } from '../types'
 
-const initialForm = { name: '', email: '', message: '' }
+const initialForm: ContactFormData = { name: '', email: '', message: '' }
 
 const fieldClass =
   'w-full rounded-lg border border-line bg-card px-4 py-3 text-body placeholder:text-faint focus:border-accent focus:outline-none'
 
 function ContactForm() {
-  const [form, setForm] = useState(initialForm)
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [form, setForm] = useState<ContactFormData>(initialForm)
+  const [status, setStatus] = useState<FormStatus>('idle')
 
-  function handleChange(event) {
+  function handleChange(
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     const { name, value } = event.target
     setForm((previous) => ({ ...previous, [name]: value }))
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setStatus('sending')
 

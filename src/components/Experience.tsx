@@ -1,7 +1,12 @@
 import Section from './Section'
 import { experience } from '../data/experience'
+import type { Job } from '../types'
 
-function ExperienceItem({ job }) {
+interface ExperienceItemProps {
+  job: Job
+}
+
+function ExperienceItem({ job }: ExperienceItemProps) {
   return (
     <li className="relative pb-12 pl-8 last:pb-0">
       <span className="absolute -left-[7px] top-2 h-3.5 w-3.5 rounded-full border-2 border-page bg-blue-500" />

@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../hooks/useTheme'
-import { useActiveSection } from '../hooks/useActiveSection' // new
+import { useActiveSection } from '../hooks/useActiveSection'
 
-const navLinks = [
+interface NavLink {
+  label: string
+  href: string
+}
+
+const navLinks: NavLink[] = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
@@ -11,24 +16,30 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-// new: ids of every section to watch ('home' is the Hero)
+// ids of every section to watch ('home' is the Hero)
 const sectionIds = ['home', ...navLinks.map((link) => link.href.slice(1))]
 
-function NavLinks({ className, activeId, onLinkClick }) {
+interface NavLinksProps {
+  className: string
+  activeId: string
+  onLinkClick?: () => void
+}
+
+function NavLinks({ className, activeId, onLinkClick }: NavLinksProps) {
   return (
     <ul className={className}>
       {navLinks.map((link) => {
-        const isActive = link.href === `#${activeId}` // new
+        const isActive = link.href === `#${activeId}`
 
         return (
           <li key={link.href}>
             <a
               href={link.href}
               onClick={onLinkClick}
-              aria-current={isActive ? 'location' : undefined} // new
+              aria-current={isActive ? 'location' : undefined}
               className={`block transition-colors hover:text-heading ${
                 isActive ? 'text-accent' : 'text-body'
-              }`} // changed
+              }`}
             >
               {link.label}
             </a>
