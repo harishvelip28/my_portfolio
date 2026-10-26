@@ -1,4 +1,12 @@
-function Section({ id, title, children }) {
+import type { ReactNode } from 'react'
+
+interface SectionProps {
+  id: string
+  title: string
+  children: ReactNode
+}
+
+function Section({ id, title, children }: SectionProps) {
   return (
     <section id={id} className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
