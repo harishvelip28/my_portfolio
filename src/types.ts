@@ -32,6 +32,8 @@ export interface Project {
   tech: string[]
   github: string
   live: string
+  slug?: string
+  highlights?: string[]
 }
 
 export type Theme = 'light' | 'dark'

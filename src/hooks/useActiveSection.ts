@@ -24,5 +24,5 @@ export function useActiveSection(ids: string[]): string {
     return () => observer.disconnect()
   }, [ids, pathname])
 
-  return activeId
+  return pathname === '/' ? activeId : ''
 }
