@@ -1,11 +1,14 @@
 import { Link, useParams } from 'react-router'
 import { projects } from '../data/projects'
 import NotFound from './NotFound'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 function ProjectDetail() {
   const { slug } = useParams<'slug'>()
   const project = projects.find((item) => item.slug === slug)
 
+  useDocumentTitle(project?.title ?? 'Page not found')
+  
   if (!project) return <NotFound />
 
   const { title, description, tech, highlights, github, live } = project

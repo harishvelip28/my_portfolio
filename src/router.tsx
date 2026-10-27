@@ -1,17 +1,22 @@
-import { createBrowserRouter } from 'react-router'
-import Layout from './components/Layout'
-import Home from './pages/Home'
-import NotFound from './pages/NotFound'
-import ProjectDetail from './pages/ProjectDetail'
+import { createBrowserRouter } from "react-router";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'projects/:slug', element: <ProjectDetail /> },
-      { path: '*', element: <NotFound /> },
+      {
+        path: "projects/:slug",
+        lazy: async () => {
+          const { default: Component } = await import("./pages/ProjectDetail");
+          return { Component };
+        },
+      },
+      { path: "*", element: <NotFound /> },
     ],
   },
-])
+]);
