@@ -1,6 +1,6 @@
 import Section from "./Section";
 import ProjectCard from "./ProjectCard";
-// import GithubRepos from "./GithubRepos";
+import GithubRepos from "./GithubRepos";
 import { projects } from "../data/projects";
 
 function Projects() {
@@ -13,7 +13,7 @@ function Projects() {
       </div>
 
       {/* uncomment this to display GitHub repositories */}
-      {/* <GithubRepos /> */}
+      <GithubRepos />
     </Section>
   );
 }
