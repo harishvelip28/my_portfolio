@@ -40,9 +40,10 @@ function ProjectCard({ project }: ProjectCardProps) {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-body hover:text-accent"
+              className="..."
             >
-              GitHub ↗
+              GitHub<span aria-hidden="true"> ↗</span>
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
           )}
           {live && (
@@ -50,9 +51,10 @@ function ProjectCard({ project }: ProjectCardProps) {
               href={live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-body hover:text-accent"
+              className="..."
             >
-              Live demo ↗
+              Live demo<span aria-hidden="true"> ↗</span>
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
           )}
         </div>

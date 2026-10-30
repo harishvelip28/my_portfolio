@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ThemeToggle from './ThemeToggle'
 import { useTheme } from '../hooks/useTheme'
 import { useActiveSection } from '../hooks/useActiveSection'
@@ -53,11 +53,25 @@ function NavLinks({ className, activeId, onLinkClick }: NavLinksProps) {
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
-  const activeId = useActiveSection(sectionIds) // new
+  const activeId = useActiveSection(sectionIds)
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen])
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full border-b border-line bg-card/90 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <nav
+        aria-label="Main"
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+      >
         <a href="/#home" className="text-xl font-bold text-heading">
           Harish<span className="text-accent">.</span>
         </a>
@@ -70,6 +84,7 @@ function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? '✕' : '☰'}
           </button>
@@ -77,11 +92,13 @@ function Navbar() {
       </nav>
 
       {isOpen && (
-        <NavLinks
-          className="flex flex-col gap-4 bg-card px-6 pb-6 md:hidden"
-          activeId={activeId}
-          onLinkClick={() => setIsOpen(false)}
-        />
+        <nav id="mobile-menu" aria-label="Mobile">
+          <NavLinks
+            className="flex flex-col gap-4 bg-card px-6 pb-6 md:hidden"
+            activeId={activeId}
+            onLinkClick={() => setIsOpen(false)}
+          />
+        </nav>
       )}
     </header>
   )

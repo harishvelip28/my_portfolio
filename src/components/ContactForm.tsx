@@ -6,7 +6,7 @@ import type { ContactFormData, FormStatus } from '../types'
 const initialForm: ContactFormData = { name: '', email: '', message: '' }
 
 const fieldClass =
-  'w-full rounded-lg border border-line bg-card px-4 py-3 text-body placeholder:text-faint focus:border-accent focus:outline-none'
+  'w-full rounded-lg border border-line bg-card px-4 py-3 text-body placeholder:text-faint focus:border-accent'
 
 function ContactForm() {
   const [form, setForm] = useState<ContactFormData>(initialForm)
