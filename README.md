@@ -1,16 +1,77 @@
-# React + Vite
+# Harish Hanumant Velip | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![CI](https://github.com/harishvelip28/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/harishvelip28/portfolio/actions/workflows/ci.yml)
 
-Currently, two official plugins are available:
+A responsive, accessible portfolio site built with React and TypeScript. I started it to learn React coming from an Angular background, and it grew into a project covering routing, testing, CI and accessibility.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live site:** https://my-portfolio-ruby-psi-83.vercel.app
 
-## React Compiler
+![Home page in dark theme](docs/screenshots/home-dark.webp)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Light and dark theme, following the system setting and remembering the visitor's choice
+- Project detail pages at `/projects/:slug`, lazy-loaded, with per-page titles
+- Active navigation highlighting using `IntersectionObserver`
+- Scroll-reveal animations that respect the "reduce motion" setting
+- Contact form that sends messages through Formspree
+- Latest public repositories loaded from the GitHub API
+- Accessible: skip link, visible focus styles, keyboard-friendly menu, automated axe checks
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Lighthouse (deployed site)
+
+| Performance | Accessibility | Best practices | SEO |
+|---|---|---|---|
+| 100 | 96 | 100 | 54 |
+
+## Tech stack
+
+React, TypeScript (strict), Vite, Tailwind CSS, React Router, Vitest, React Testing Library, axe-core, ESLint, GitHub Actions, Vercel.
+
+## Getting started
+
+```bash
+git clone https://github.com/harishvelip28/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
+
+| Script | What it does |
+|---|---|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run the TypeScript compiler without emitting files |
+| `npm run test` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests once with a coverage report |
+
+## Project structure
+
+```
+src/
+├── components/   UI sections and shared pieces
+├── data/         typed content: profile, skills, experience, projects
+├── hooks/        useTheme, useActiveSection, useInView, useGithubRepos, useDocumentTitle
+├── pages/        Home, ProjectDetail, NotFound, ErrorPage
+├── test/         test setup
+├── routes.tsx    route table
+├── router.tsx    browser router
+└── types.ts      shared TypeScript types
+```
+
+## Design decisions
+
+- **Content is separate from layout.** Jobs, skills and projects live in typed files under `src/data`, so updating them never touches a component.
+- **Colours are semantic tokens** (CSS variables such as `text-muted`), which is how the theme switch works without per-component overrides.
+- **Tests at three levels:** components, hooks, and the real route table rendered with an in-memory router, plus an accessibility scan.
+- **CI** runs lint, type checks, tests with coverage and the production build on every push to `main` and on pull requests.
+
+## Customising
+
+Edit the files in `src/data` and, for the contact form, the endpoint in `src/data/profile.ts`. No environment variables are needed.
+
+## Deployment
+
+Deployed on Vercel. `vercel.json` rewrites every route to `index.html` so direct links to project pages work.
