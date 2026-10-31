@@ -15,7 +15,7 @@ export function useGithubRepos(username: string) {
         setStatus('loading')
 
         const response = await fetch(
-          `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`,
+          `https://api.github.com/users/${username}/repos?sort=updated&per_page=30`,
           { signal: controller.signal }
         )
         if (!response.ok) throw new Error(`GitHub responded ${response.status}`)
