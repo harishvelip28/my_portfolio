@@ -15,7 +15,7 @@ export const profile: Profile = {
     { label: "GitHub", url: "" },
     {
       label: "LinkedIn",
-      url: "https://www.linkedin.com/in/harish-velip-499390420",
+      url: "https://www.linkedin.com/in/harish-hanumant-velip-499390420",
     },
   ],
   formEndpoint: "https://formspree.io/f/mrpedjjp",
