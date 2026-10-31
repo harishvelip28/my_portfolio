@@ -1,12 +1,17 @@
-import { profile } from '../data/profile'
+import { profile } from "../data/profile";
 
 function Hero() {
   return (
     <section id="home" className="flex min-h-screen items-center px-6 pt-20">
       <div className="mx-auto w-full max-w-6xl">
-        <p className="mb-4 font-mono text-accent">Hi, my name is</p>
+        <p className="mb-4 font-mono text-accent motion-safe:animate-rise">
+          Hi, my name is
+        </p>
 
-        <h1 className="text-5xl font-bold text-heading md:text-7xl">
+        <h1
+          className="... motion-safe:animate-rise"
+          style={{ animationDelay: "100ms" }}
+        >
           {profile.name}
         </h1>
 
@@ -14,9 +19,7 @@ function Hero() {
           {profile.role}
         </h2>
 
-        <p className="mt-6 max-w-xl text-lg text-muted">
-          {profile.tagline}
-        </p>
+        <p className="mt-6 max-w-xl text-lg text-muted">{profile.tagline}</p>
 
         <div className="mt-10 flex flex-wrap gap-4">
           <a
@@ -34,7 +37,7 @@ function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

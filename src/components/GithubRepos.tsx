@@ -2,6 +2,7 @@ import ProjectCard from './ProjectCard'
 import { useGithubRepos } from '../hooks/useGithubRepos'
 import { profile } from '../data/profile'
 import type { GithubRepo, Project } from '../types'
+import Reveal from './Reveal'
 
 // Reshape a GitHub repo into the props ProjectCard already understands
 function toProject(repo: GithubRepo): Project {
@@ -73,8 +74,10 @@ function GithubRepos() {
 
       {status === 'success' && visible.length > 0 && (
         <div className="grid gap-6 md:grid-cols-2">
-          {visible.map((repo) => (
-            <ProjectCard key={repo.id} project={toProject(repo)} />
+          {visible.map((repo,index) => (
+             <Reveal key={repo.id} delay={(index % 2) * 100} className="h-full">
+    <ProjectCard project={toProject(repo)} />
+  </Reveal>
           ))}
         </div>
       )}

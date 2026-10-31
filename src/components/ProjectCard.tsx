@@ -9,7 +9,7 @@ function ProjectCard({ project }: ProjectCardProps) {
   const { title, description, tech, github, live, slug } = project;
 
   return (
-    <article className="flex flex-col rounded-xl border border-line bg-card p-6 transition-colors hover:border-blue-500">
+    <article className="flex h-full flex-col rounded-xl border border-line bg-card p-6 hover:border-accent motion-safe:transition motion-safe:duration-300 motion-safe:hover:-translate-y-1">
       <h3 className="text-xl font-semibold text-heading">{title}</h3>
       <p className="mt-3 text-muted">{description}</p>
 

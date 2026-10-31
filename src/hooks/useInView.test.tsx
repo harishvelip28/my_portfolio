@@ -99,4 +99,16 @@ describe('Reveal', () => {
 
     expect(wrapper).toHaveClass('opacity-100')
   })
+
+    it('applies the stagger delay as an inline transition delay', () => {
+    render(
+      <Reveal delay={200}>
+        <p>Hello</p>
+      </Reveal>,
+    )
+
+    const wrapper = screen.getByText('Hello').parentElement as HTMLElement
+
+    expect(wrapper.style.transitionDelay).toBe('200ms')
+  })
 })
