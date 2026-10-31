@@ -4,7 +4,7 @@
 
 A responsive, accessible portfolio site built with React and TypeScript. I started it to learn React coming from an Angular background, and it grew into a project covering routing, testing, CI and accessibility.
 
-**Live site:** https://my-portfolio-ruby-psi-83.vercel.app
+**Live site:** https://harishhanumantvelip.vercel.app/
 
 ![Home page in dark theme](docs/screenshots/home-dark.webp)
 

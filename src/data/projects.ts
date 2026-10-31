@@ -14,7 +14,7 @@ export const projects: Project[] = [
       "Vitest",
     ],
     github: "https://github.com/harishvelip28/my_portfolio",
-    live: "https://my-portfolio-ruby-psi-83.vercel.app/",
+    live: "https://harishhanumantvelip.vercel.app/",
     slug: "portfolio-website",
     highlights: [
       "Light and dark theme that follows the system setting and remembers the visitor’s choice",
