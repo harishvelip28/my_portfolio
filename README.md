@@ -1,6 +1,6 @@
 # Harish Hanumant Velip | Portfolio
 
-[![CI](https://github.com/harishvelip28/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/harishvelip28/portfolio/actions/workflows/ci.yml)
+[![CI](https://github.com/harishvelip28/my_portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/harishvelip28/my_portfolio/actions/workflows/ci.yml)
 
 A responsive, accessible portfolio site built with React and TypeScript. I started it to learn React coming from an Angular background, and it grew into a project covering routing, testing, CI and accessibility.
 
